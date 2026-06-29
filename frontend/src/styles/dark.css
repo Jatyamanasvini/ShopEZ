@@ -204,3 +204,317 @@ footer {
 .footer-bottom {
   color: #ffffff;
 }
+
+/* ─── Hero Section (static, no crop) ─── */
+.hero-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 40px 60px;
+}
+.hero-title {
+  font-family: 'Rubik Mono One', sans-serif;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  line-height: 1.1;
+  text-transform: uppercase;
+  margin-bottom: 30px;
+}
+.hero-title .white-text {
+  color: #e5e5e5;
+  display: block;
+}
+.hero-title .pink-text {
+  color: #ff007f;
+  display: inline-block;
+}
+.hero-title .number-text {
+  color: #e5e5e5;
+  display: inline-block;
+}
+.hero-display {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+}
+.hero-image-wrapper {
+  flex: 1;
+  max-width: 500px;
+}
+.hero-image-wrapper img {
+  width: 100%;
+  height: auto;
+  filter: grayscale(30%) contrast(110%);
+  display: block;
+}
+.intro-split {
+  flex: 1;
+  padding-top: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.intro-text {
+  font-size: 1.15rem;
+  line-height: 1.6;
+  color: #cccccc;
+  max-width: 400px;
+  margin-bottom: 30px;
+}
+.btn-group {
+  display: flex;
+  gap: 15px;
+}
+
+/* ─── Collage banners ─── */
+.banner-stack {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Each collage block = one section */
+.collage-block {
+  position: relative;
+  width: 100%;
+  height: 85vh;
+  min-height: 460px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-bottom: 1px solid #1a1a22;
+}
+
+/* 2-up layout: big left + stacked right */
+.collage-grid {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 4px;
+}
+.collage-grid-rev {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 4px;
+}
+
+.collage-main {
+  background-size: cover;
+  background-position: center;
+  filter: grayscale(0.6) contrast(1.15);
+  transition: filter 0.5s ease;
+}
+.collage-block:hover .collage-main {
+  filter: grayscale(0.15) contrast(1.2);
+}
+
+.collage-side {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  gap: 4px;
+}
+
+.collage-sm {
+  background-size: cover;
+  background-position: center;
+  filter: grayscale(0.7) contrast(1.1);
+  transition: filter 0.5s ease;
+}
+.collage-block:hover .collage-sm {
+  filter: grayscale(0.2) contrast(1.15);
+}
+
+.collage-wide {
+  grid-column: span 2;
+}
+
+/* 3-column triptych */
+.collage-triptych {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 4px;
+}
+
+.collage-tall {
+  background-size: cover;
+  background-position: center;
+  filter: grayscale(0.6) contrast(1.15);
+  transition: filter 0.5s ease;
+}
+.collage-block:hover .collage-tall {
+  filter: grayscale(0.1) contrast(1.25);
+}
+
+/* Mosaic: big + 3 small in a strip */
+.collage-mosaic {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-rows: 2fr 1fr;
+  gap: 4px;
+}
+
+.mosaic-main {
+  background-size: cover;
+  background-position: center;
+  filter: grayscale(0.6) contrast(1.15);
+  transition: filter 0.5s ease;
+}
+.collage-block:hover .mosaic-main {
+  filter: grayscale(0.15) contrast(1.2);
+}
+
+.mosaic-strip {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 4px;
+}
+
+.mosaic-sm {
+  background-size: cover;
+  background-position: center;
+  filter: grayscale(0.7) contrast(1.1);
+  transition: filter 0.5s ease;
+}
+.collage-block:hover .mosaic-sm {
+  filter: grayscale(0.2) contrast(1.15);
+}
+
+/* Overlay & caption sit on top of everything */
+.collage-block .banner-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(13,13,17,0.75) 0%, rgba(13,13,17,0.1) 60%, transparent 100%);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.collage-block .banner-caption {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  padding: 0 1.5rem;
+}
+
+.collage-block .banner-tag {
+  font-size: 0.65rem;
+  letter-spacing: 4px;
+  color: #ff007f;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.collage-block .banner-caption h2 {
+  font-size: clamp(2.2rem, 7vw, 4.5rem);
+  text-transform: uppercase;
+  letter-spacing: 6px;
+  color: #fff;
+  margin: 0;
+  text-shadow: 0 0 40px rgba(0,0,0,0.6);
+}
+
+/* ─── Home footer ─── */
+.home-footer {
+  border-top: 1px solid #1e1e24;
+}
+.footer-strip {
+  margin-top: 1.5rem;
+  padding: 0.6rem 0;
+  border-top: 1px solid #1e1e24;
+  border-bottom: 1px solid #1e1e24;
+  color: rgba(255,255,255,0.08);
+  font-size: 0.6rem;
+  letter-spacing: 4px;
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 768px) {
+  .cat-banner-row:first-child,
+  .cat-banner-row:last-child {
+    grid-template-columns: 1fr;
+  }
+  .cat-card {
+    height: 240px;
+  }
+  .editorial-banner {
+    height: 50vh;
+  }
+  .grunge-hero {
+    height: 80vh;
+  }
+}
+
+/* ─── Admin Dashboard ─── */
+.stat-card {
+  background: #121216;
+  border: 1px solid #1e1e24;
+  border-radius: 8px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+.stat-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #888;
+}
+.stat-value {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8rem;
+}
+.admin-table th {
+  text-align: left;
+  padding: 0.75rem 0.5rem;
+  color: #888;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-bottom: 1px solid #1e1e24;
+}
+.admin-table td {
+  padding: 0.75rem 0.5rem;
+  color: #fff;
+  border-bottom: 1px solid #1a1a22;
+  vertical-align: middle;
+}
+.admin-table tbody tr:hover {
+  background: #16161f;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.status-being-shipped {
+  background: #1a2a3a;
+  color: #6ab0ff;
+}
+.status-shipped {
+  background: #2a2a1a;
+  color: #ffcc44;
+}
+.status-delivered {
+  background: #1a2a1a;
+  color: #4ade80;
+}
+.status-cancelled {
+  background: #2a1a1a;
+  color: #ff5555;
+}

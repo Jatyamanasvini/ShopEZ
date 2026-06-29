@@ -53,6 +53,15 @@ export function CartProvider({ children }) {
 
   const clearCart = () => setItems([]);
 
+  const addFreebie = (product) => {
+    setItems((prev) => {
+      const cartKey = 'freebie-shopez-charm';
+      const existing = prev.find((item) => item.cartKey === cartKey);
+      if (existing) return prev;
+      return [...prev, { ...product, quantity: 1, selectedSize: 'One Size', cartKey, price: 0 }];
+    });
+  };
+
   const cartCount = useMemo(() => items.reduce((sum, item) => sum + item.quantity, 0), [items]);
   const total = useMemo(
     () => items.reduce((sum, item) => sum + item.price * item.quantity, 0),
@@ -61,7 +70,7 @@ export function CartProvider({ children }) {
 
   return (
     <CartContext.Provider
-      value={{ items, addToCart, updateQuantity, removeFromCart, clearCart, cartCount, total }}
+      value={{ items, addToCart, updateQuantity, removeFromCart, clearCart, addFreebie, cartCount, total }}
     >
       {children}
     </CartContext.Provider>

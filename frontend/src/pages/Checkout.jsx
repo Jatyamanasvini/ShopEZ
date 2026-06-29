@@ -5,11 +5,20 @@ import { useAuth } from "../context/AuthContext";
 import { useCart } from "../context/CartContext";
 import { saveOrder } from "../utils/orders";
 
+const FREEBIE = {
+  id: 'shopez-charm-keychain',
+  name: 'SHOPEZ Charm Keychain',
+  image: '/images/products/cart/shopez-charm-keychain.jpeg',
+  price: 0,
+  currency: 'Free',
+};
+
 export default function Checkout() {
   const navigate = useNavigate();
   const { isAuthenticated } = useAuth();
-  const { items, total, clearCart } = useCart();
+  const { items, total, clearCart, addFreebie } = useCart();
   const [message, setMessage] = useState("");
+  const [showFreebie, setShowFreebie] = useState(false);
 
   if (!isAuthenticated) {
     return (
@@ -40,12 +49,32 @@ export default function Checkout() {
   const handlePlaceOrder = async () => {
     try {
       await saveOrder(items, total);
-      clearCart();
-      setMessage("Order placed! Your items are being shipped.");
-      setTimeout(() => navigate("/profile"), 1500);
+
+      if (total > 5000) {
+        setShowFreebie(true);
+      } else {
+        clearCart();
+        setMessage("Order placed! Your items are being shipped.");
+        setTimeout(() => navigate("/profile"), 1500);
+      }
     } catch (error) {
       setMessage(error.message || "Failed to place order.");
     }
+  };
+
+  const handleClaimFreebie = () => {
+    addFreebie(FREEBIE);
+    clearCart();
+    setShowFreebie(false);
+    setMessage("Order placed! Your freebie has been added to cart.");
+    setTimeout(() => navigate("/cart"), 1500);
+  };
+
+  const handleDismissFreebie = () => {
+    clearCart();
+    setShowFreebie(false);
+    setMessage("Order placed! Your items are being shipped.");
+    setTimeout(() => navigate("/profile"), 1500);
   };
 
   return (
@@ -76,6 +105,56 @@ export default function Checkout() {
         </button>
         <Link to="/cart" className="btn btn-outline ms-2">Back to cart</Link>
       </div>
+
+      {/* ─── Freebie modal ─── */}
+      {showFreebie && (
+        <div
+          style={{
+            position: 'fixed', inset: 0, zIndex: 9999,
+            background: 'rgba(0,0,0,0.8)',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            padding: '1rem',
+          }}
+          onClick={handleDismissFreebie}
+        >
+          <div
+            style={{
+              background: '#121216', border: '1px solid #333',
+              maxWidth: 420, width: '100%', padding: '2rem',
+              borderRadius: 8, textAlign: 'center', position: 'relative',
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={handleDismissFreebie}
+              style={{
+                position: 'absolute', top: 12, right: 14,
+                background: 'none', border: 'none', color: '#fff',
+                fontSize: '1.4rem', cursor: 'pointer', lineHeight: 1,
+              }}
+            >
+              ✕
+            </button>
+
+            <img
+              src={FREEBIE.image}
+              alt="SHOPEZ Charm Keychain"
+              style={{ width: '100%', maxHeight: 280, objectFit: 'contain', borderRadius: 6, marginBottom: '1rem' }}
+            />
+
+            <h3 style={{ color: '#ff007f', marginBottom: '0.5rem' }}>
+              You earned a freebie! 🎀
+            </h3>
+            <p style={{ color: '#ccc', fontSize: '0.9rem', marginBottom: '1.5rem' }}>
+              Your order qualified for a FREE SHOPEZ Charm Keychain. It's been added to your cart — no extra cost!
+            </p>
+
+            <button className="btn btn-pink" onClick={handleClaimFreebie} style={{ width: '100%' }}>
+              Claim my freebie
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
