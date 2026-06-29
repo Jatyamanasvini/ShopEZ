@@ -1,0 +1,206 @@
+:root {
+  font-family: 'Inter', sans-serif;
+  color: #ffffff;
+  background-color: #0d0d11;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body, #root {
+  min-height: 100%;
+  background: #0d0d11;
+  color: #ffffff;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+button {
+  font: inherit;
+  color: #ffffff;
+}
+
+.shop-page {
+  background: #0d0d11;
+  color: #ffffff;
+}
+
+.topbar {
+  background: #121216;
+  border-bottom: 1px solid #22222a;
+  padding: 15px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.nav-left,
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.logo {
+  font-family: 'Rubik Mono One', sans-serif;
+  font-size: 1.1rem;
+  color: #ff007f;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+}
+
+.nav-links a,
+.nav-right a {
+  color: #ffffff;
+}
+
+.nav-links a:hover,
+.nav-right a:hover {
+  color: #ffffff;
+}
+
+.container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 40px;
+}
+
+.hero-title {
+  color: #ffffff;
+}
+
+.hero-title .white-text,
+.hero-title .number-text {
+  color: #ffffff;
+}
+
+.hero-title .pink-text {
+  color: #ff007f;
+}
+
+.intro-text {
+  color: #ffffff;
+}
+
+.btn-pink {
+  background-color: #ff007f;
+  color: #ffffff;
+}
+
+.btn-pink:hover {
+  background-color: #ff3399;
+  color: #ffffff;
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+}
+
+.btn-outline:hover {
+  background-color: #ffffff;
+  color: #0d0d11;
+}
+
+.section-title {
+  color: #ffffff;
+}
+
+.view-all {
+  color: #ffffff;
+}
+
+.view-all:hover {
+  color: #ffffff;
+}
+
+.product-meta .title {
+  color: #ffffff;
+}
+
+.product-meta .category {
+  color: #ffffff;
+}
+
+.product-price {
+  color: #ffffff;
+}
+
+.card-body .btn-outline-light,
+.card-body .btn-outline {
+  border-color: #ffffff;
+  color: #ffffff;
+}
+
+.card-body .btn-outline-light:hover,
+.card-body .btn-outline:hover {
+  background: #ffffff;
+  color: #0d0d11;
+}
+
+.marquee-container {
+  background-color: #ff007f;
+  color: #000000;
+}
+
+footer {
+  color: #ffffff;
+}
+
+.text-muted,
+.text-secondary,
+.text-white-50 {
+  color: #ffffff !important;
+}
+
+.footer-brand .logo-large {
+  color: #ff007f;
+}
+
+.footer-brand p {
+  color: #ffffff;
+}
+
+.social-btn {
+  border: 1px solid #ffffff;
+  color: #ffffff;
+}
+
+.social-btn:hover {
+  border-color: #ffffff;
+  color: #ffffff;
+}
+
+.footer-links-column h4 {
+  color: #ffffff;
+}
+
+.footer-links-column a {
+  color: #ffffff;
+}
+
+.footer-links-column a:hover {
+  color: #ff007f;
+}
+
+.footer-bottom {
+  color: #ffffff;
+}
